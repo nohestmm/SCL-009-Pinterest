@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SCL-009-pinterest/static/css/main.2cce8147.chunk.css",
+    "main.js": "/SCL-009-pinterest/static/js/main.049c13a6.chunk.js",
+    "main.js.map": "/SCL-009-pinterest/static/js/main.049c13a6.chunk.js.map",
+    "runtime~main.js": "/SCL-009-pinterest/static/js/runtime~main.552e6fd7.js",
+    "runtime~main.js.map": "/SCL-009-pinterest/static/js/runtime~main.552e6fd7.js.map",
+    "static/js/2.ca254482.chunk.js": "/SCL-009-pinterest/static/js/2.ca254482.chunk.js",
+    "static/js/2.ca254482.chunk.js.map": "/SCL-009-pinterest/static/js/2.ca254482.chunk.js.map",
+    "index.html": "/SCL-009-pinterest/index.html",
+    "precache-manifest.156ba18a7f471d433234ff26f8379c5c.js": "/SCL-009-pinterest/precache-manifest.156ba18a7f471d433234ff26f8379c5c.js",
+    "service-worker.js": "/SCL-009-pinterest/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/SCL-009-pinterest/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/SCL-009-pinterest/static/media/logo.5d5d9eef.svg"
+  }
+}
