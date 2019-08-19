@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/SCL-009-Pinterest/precache-manifest.3a013bc792bc6443291eb6e48b102baa.js"
+  "/SCL-009-Pinterest/precache-manifest.9582c9cc99f7a7b457eb71ea8bb22e17.js"
 );
 
 self.addEventListener('message', (event) => {
