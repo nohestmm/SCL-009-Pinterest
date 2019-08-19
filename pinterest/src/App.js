@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal'
-
+import InfiniteScroll from 'react-infinite-scroll-component'
 import './App.css';
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
@@ -16,7 +16,10 @@ class App extends React.Component {
       images: [],
       show: false,
       active: false,
-      pic: ''
+      pic: '',
+      count:30,
+      start:1
+      
     }
     this.query = '';
     this.getQueryValue = this.getQueryValue.bind(this);
@@ -88,7 +91,9 @@ hideModal = () => {
   }
   componentDidMount() {
 
-    fetch(`${randomUrl}?per_page=1000&client_id=${clientId}`)
+    const { count, start } = this.state;
+
+    fetch(`${randomUrl}?per_page=${count}&client_id=${clientId}&start=${start}`)
       .then(res => {
         return res.json()
       }).then(resJson => {
@@ -99,14 +104,28 @@ hideModal = () => {
       })
   }
 
+fecthImages=()=>{
+  const { count, start } = this.state;
+  this.setState({start: this.state.start + count});
+  fetch(`${randomUrl}?per_page=${count}&client_id=${clientId}&start=${start}`)
+  .then(res => {
+    return res.json()
+  }).then(resJson => {
+    console.log(resJson);
+    this.setState({
+      images: this.state.images.concat(resJson)
+    })
+  })
+}
+
   render() {
-    const { modalOpen, pic } = this.state;
+   
     return (
       <>
         <nav className="navbar">
           <div className="content-icon"><i className="fab fa-pinterest" onClick={this.getQueryValue}></i></div>
         
-            <div className= {this.state.active ? "border-search": "content-input"} onClick={this.toggleClass}>
+            <div className= {this.state.active ?"border-search":"content-input"} onClick={this.toggleClass}>
             <div><i className="fas fa-search"></i></div>
             <input className="input-search color-text" placeholder="Buscar" type="text" onKeyPress={this.getQueryValue} />
           </div>
@@ -123,13 +142,18 @@ hideModal = () => {
             <div className="content-iconright"><i className="fas fa-ellipsis-h"></i></div>
           </div>
         </nav> 
-       {/* <Modal  show={ modalOpen } 
-           onClose={ this.toggleModal.bind(this) }>
-          <img src={ pic } alt=""/>
-        </Modal>  */}
 
-        
- <div className="content-images">{this.showImages()}</div>
+     <InfiniteScroll
+     dataLength={this.state.images.length} 
+     next={this.fecthImages}
+     hasMore={true}
+     loader={<h4>...</h4>}> 
+     <div className="content-images">{this.showImages()}</div>
+     </InfiniteScroll>
+
+
+
+
        
          <Modal show={this.state.show} pic={this.state.pic} handleClose={this.hideModal}/>
           
