@@ -1,4 +1,6 @@
 import React from 'react';
+import Modal from './Modal'
+
 import './App.css';
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
@@ -12,22 +14,43 @@ class App extends React.Component {
     super(props)
     this.state = {
       images: [],
-      show: false
+      show: false,
+      active: false,
+      pic: ''
     }
     this.query = '';
     this.getQueryValue = this.getQueryValue.bind(this);
     this.searchImg = this.searchImg.bind(this);
+    this.toggleClass = this.toggleClass.bind(this);
+    // this.toggleModal = this.toggleModal.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+    
 
   }
 
-  showModal = () => {
+  toggleClass() {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
+}
+showModal = (pic) => {
+  console.log(pic)
+  this.setState({ show: true,});
+  this.setState({pic: pic})
+};
 
-    this.setState({ show: true });
-  };
+hideModal = () => {
+  this.setState({ show: false });
+};
 
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+//  // Toggle Modal visibility
+//  toggleModal(pic) {
+//    console.log(pic)
+//   const state = this.state.modalOpen;
+//   // Update state: modal visibility and its content
+//   this.setState({ modalOpen: !state, pic });
+// }
+
 
 
   getQueryValue(e) {
@@ -47,9 +70,21 @@ class App extends React.Component {
   }
   showImages() {
 
-    return this.state.images.map(el => {
-      return <div className="content-img" key={el.id} ><img className="imagesList" src={el.urls.thumb} alt="" key={el.id} onClick={this.showModal} /></div>
+    return (
+      this.state.images.map(el => {
+      return (
+      <div 
+      className="content-img" 
+      key={el.id} >
+      <img className="imagesList" 
+      src={el.urls.thumb} alt="" 
+      key={el.id} onClick={()=>this.showModal(el.urls.small)} /></div>)
     })
+      
+   
+    ) 
+    
+    
   }
   componentDidMount() {
 
@@ -65,30 +100,44 @@ class App extends React.Component {
   }
 
   render() {
+    const { modalOpen, pic } = this.state;
     return (
       <>
         <nav className="navbar">
           <div className="content-icon"><i className="fab fa-pinterest" onClick={this.getQueryValue}></i></div>
-          <div className="content-input">
+        
+            <div className= {this.state.active ? "border-search": "content-input"} onClick={this.toggleClass}>
             <div><i className="fas fa-search"></i></div>
             <input className="input-search color-text" placeholder="Buscar" type="text" onKeyPress={this.getQueryValue} />
           </div>
-        <div className="second-content">
-          <div className="color-text navtext">Inicio</div>
-          <div className="color-text navtext">Siguiendo</div>
-          <div className="content-profile navtext">
-            <div><i className="fas fa-user-circle"></i></div>
-            <div className="color-text">Nohemi</div>
+          <div className="second-content">
+            <div className="color-text navtext" style={{ color: "#262626" }}>Inicio</div>
+            <div className="color-text navtext">Siguiendo</div>
+            <div className="content-profile navtext color-text">
+              <div><i className="fas fa-user-circle"></i></div>
+              <div>Nohemi</div>
+            </div>
+            <div className="border-separator padding-navtext"></div>
+            <div className="content-iconright"><i className="fas fa-comment-dots"></i></div>
+            <div className="content-iconright"><i className="fas fa-bell"></i></div>
+            <div className="content-iconright"><i className="fas fa-ellipsis-h"></i></div>
           </div>
-          <div className="border-separator padding-navtext"></div>
-          <div className= "content-iconright"><i className="fas fa-comment-dots"></i></div>
-          <div className= "content-iconright"><i className="fas fa-bell"></i></div>
-          <div className= "content-iconright"><i className="fas fa-ellipsis-h"></i></div>
-          </div>
-         
         </nav> 
+       {/* <Modal  show={ modalOpen } 
+           onClose={ this.toggleModal.bind(this) }>
+          <img src={ pic } alt=""/>
+        </Modal>  */}
+
+        
+ <div className="content-images">{this.showImages()}</div>
        
-        <div className="show-img">{this.showImages()}</div>
+         <Modal show={this.state.show} pic={this.state.pic} handleClose={this.hideModal}/>
+          
+       
+      
+ 
+
+       
 
 
 
@@ -98,5 +147,6 @@ class App extends React.Component {
     )
   }
 }
+
 
 export default App;
