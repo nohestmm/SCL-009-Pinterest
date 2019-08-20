@@ -112,7 +112,7 @@
 }
 
 .content-images {
-    top: 90px;
+    margin-top: 90px;
     width: 100%;
     column-width: 210px;
     margin-left: auto;
@@ -227,4 +227,13 @@
 
 .display-none {
     display: none;
+}
+
+.content-modalheader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-buttom {
+    display: flex;
 }

@@ -17,7 +17,7 @@ class App extends React.Component {
       show: false,
       active: false,
       pic: '',
-      count:30,
+      count:100,
       start:1
       
     }
@@ -74,14 +74,14 @@ hideModal = () => {
   showImages() {
 
     return (
-      this.state.images.map(el => {
+      this.state.images.map((el,index) => {
       return (
-      <div 
+      <div   key= {index}
       className="content-img" 
-      key={el.id} >
+      >
       <img className="imagesList" 
-      src={el.urls.thumb} alt="" 
-      key={el.id} onClick={()=>this.showModal(el.urls.small)} /></div>)
+      src={el.urls.thumb} alt="" key= {index}
+       onClick={()=>this.showModal(el.urls.thumb)} /></div>)
     })
       
    
@@ -107,7 +107,8 @@ hideModal = () => {
 fecthImages=()=>{
   const { count, start } = this.state;
   this.setState({start: this.state.start + count});
-  fetch(`${randomUrl}?per_page=${count}&client_id=${clientId}&start=${start}`)
+  
+  fetch(`${randomUrl}?per_page=${start}&client_id=${clientId}&start=${count}`)
   .then(res => {
     return res.json()
   }).then(resJson => {
