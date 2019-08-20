@@ -1,51 +1,34 @@
 import React from 'react';
-// class Modal extends React.Component {
-//     render() {
-//       const { show, bg} = this.props;
-//       // Custom styles: set visibility and backbround color
-//       const styles = {
-//         modal: {
-//           display: (show) ? null : 'none', 
-//           backgroundColor: bg || 'rgba(255, 255, 255, 0.8)',     
-//         }
-//       };
-
-//       return (
-//         <div className="modal-wrapper" style={styles.modal}>
-//           { /* Close Button: invoke callback */ }
-//           <span className="glyphicon modal-item"
-//               onClick={this.props.onClose}><i class="fas fa-times"></i></span>
-//           { /* Content */ }
-//           <div className="modal-item">
-//               { this.props.children }
-//                   </div>
-//         </div>
-//       )
-//     }
-//   }
+import Footerbutton from './Footerbutton';
 const Modal = ({ handleClose, show, pic }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <div className= "button-closemodal">
+        <button className = "btn-close " onClick={handleClose}><i className="fas fa-times"></i>
+        </button>
+        </div>
+         <section className="modal-main"> 
         <div className="content-modalheader">
-          <div><i className="fas fa-ellipsis-h"></i></div>
+          <div className="content-dotsmodal"><i className="fas fa-ellipsis-h font-sizellipsis"></i></div>
           <div className="content-buttom">
-            <button>
+            <button className="modal-button color-send">
             <div><i className="fas fa-upload"></i></div>
-            <div>Enviar</div>
+            <div className="text-btnsend">Enviar</div>
            </button>
+           <button className="modal-button color-save">
             <div><i className="fas fa-thumbtack"></i></div>
-           
+            <div className="text-btnsave">Guardar</div>
+           </button>      
           </div>
         </div>
-        <div><img src={pic} alt="" /></div>
-        <button onClick={handleClose}>close</button>
-      </section>
+        <div className="content-modalimg">
+          <div className="divimg-modal"><img src={pic} alt="" className="img-modal" /></div>
+          </div>
+           </section>
+           <Footerbutton/>
     </div>
   );
 };
-
-
 export default Modal;

@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import './App.css';
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+import Footerbutton from './Footerbutton';
 
 const clientId = "092762aa2384f8aef21f266b06fd40cc4018c6c36fb4493858d3330ab9988e8a";
 const mainUrl = "https://api.unsplash.com/search/photos";
@@ -17,51 +18,31 @@ class App extends React.Component {
       show: false,
       active: false,
       pic: '',
-      count:100,
-      start:1
-      
+      count: 100,
+      start: 1
     }
     this.query = '';
     this.getQueryValue = this.getQueryValue.bind(this);
     this.searchImg = this.searchImg.bind(this);
     this.toggleClass = this.toggleClass.bind(this);
-    // this.toggleModal = this.toggleModal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    
-
   }
-
   toggleClass() {
     const currentState = this.state.active;
     this.setState({ active: !currentState });
-}
-showModal = (pic) => {
-  console.log(pic)
-  this.setState({ show: true,});
-  this.setState({pic: pic})
-};
-
-hideModal = () => {
-  this.setState({ show: false });
-};
-
-//  // Toggle Modal visibility
-//  toggleModal(pic) {
-//    console.log(pic)
-//   const state = this.state.modalOpen;
-//   // Update state: modal visibility and its content
-//   this.setState({ modalOpen: !state, pic });
-// }
-
-
-
+  }
+  showModal = (pic) => {
+    this.setState({ show: true, });
+    this.setState({ pic: pic })
+  }
+  hideModal = () => {
+    this.setState({ show: false });
+  };
   getQueryValue(e) {
     this.query = e.target.value;
-
     this.searchImg(this.query)
   }
-
   searchImg(query) {
     fetch(`${mainUrl}?per_page=1000&query=${query}&client_id=${clientId}`)
       .then(res => {
@@ -72,27 +53,19 @@ hideModal = () => {
       })
   }
   showImages() {
-
     return (
-      this.state.images.map((el,index) => {
-      return (
-      <div   key= {index}
-      className="content-img" 
-      >
-      <img className="imagesList" 
-      src={el.urls.thumb} alt="" key= {index}
-       onClick={()=>this.showModal(el.urls.thumb)} /></div>)
-    })
-      
-   
-    ) 
-    
-    
+      this.state.images.map((el, index) => {
+        return (
+          <div key={index}
+            className="content-img">
+            <img className="imagesList"
+              src={el.urls.thumb} alt="" key={index}
+              onClick={() => this.showModal(el.urls.thumb)} /></div>)
+      })
+    )
   }
   componentDidMount() {
-
     const { count, start } = this.state;
-
     fetch(`${randomUrl}?per_page=${count}&client_id=${clientId}&start=${start}`)
       .then(res => {
         return res.json()
@@ -103,30 +76,25 @@ hideModal = () => {
         })
       })
   }
-
-fecthImages=()=>{
-  const { count, start } = this.state;
-  this.setState({start: this.state.start + count});
-  
-  fetch(`${randomUrl}?per_page=${start}&client_id=${clientId}&start=${count}`)
-  .then(res => {
-    return res.json()
-  }).then(resJson => {
-    console.log(resJson);
-    this.setState({
-      images: this.state.images.concat(resJson)
-    })
-  })
-}
-
+  fecthImages = () => {
+    const { count, start } = this.state;
+    this.setState({ start: this.state.start + count });
+    fetch(`${randomUrl}?per_page=${start}&client_id=${clientId}&start=${count}`)
+      .then(res => {
+        return res.json()
+      }).then(resJson => {
+        console.log(resJson);
+        this.setState({
+          images: this.state.images.concat(resJson)
+        })
+      })
+  }
   render() {
-   
     return (
       <>
         <nav className="navbar">
           <div className="content-icon"><i className="fab fa-pinterest" onClick={this.getQueryValue}></i></div>
-        
-            <div className= {this.state.active ?"border-search":"content-input"} onClick={this.toggleClass}>
+          <div className={this.state.active ? "border-search" : "content-input"} onClick={this.toggleClass}>
             <div><i className="fas fa-search"></i></div>
             <input className="input-search color-text" placeholder="Buscar" type="text" onKeyPress={this.getQueryValue} />
           </div>
@@ -142,36 +110,21 @@ fecthImages=()=>{
             <div className="content-iconright"><i className="fas fa-bell"></i></div>
             <div className="content-iconright"><i className="fas fa-ellipsis-h"></i></div>
           </div>
-        </nav> 
-
-     <InfiniteScroll
-     dataLength={this.state.images.length} 
-     next={this.fecthImages}
-     hasMore={true}
-     loader={<h4>...</h4>}> 
-     <div className="content-images">{this.showImages()}</div>
-     </InfiniteScroll>
-
-
-
-
-       
-         <Modal show={this.state.show} pic={this.state.pic} handleClose={this.hideModal}/>
-          
-       
-      
- 
-
-       
-
-
-
-
-
+        </nav>
+        <InfiniteScroll
+          dataLength={this.state.images.length}
+          next={this.fecthImages}
+          hasMore={true}
+          loader={<h4>...</h4>}>
+          <div className="content-images">{this.showImages()}</div>
+        </InfiniteScroll>
+        <Modal
+          show={this.state.show}
+          pic={this.state.pic}
+          handleClose={this.hideModal} />
+          <Footerbutton/>
       </>
     )
   }
 }
-
-
 export default App;

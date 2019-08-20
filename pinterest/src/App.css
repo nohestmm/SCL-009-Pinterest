@@ -36,7 +36,9 @@
 .button-search,
 .fa-comment-dots,
 .fa-bell,
-.fa-ellipsis-h {
+.fa-ellipsis-h,
+.btn-plus,
+.btn-question {
     cursor: pointer;
 }
 
@@ -75,12 +77,6 @@
     align-items: center;
     justify-content: center;
 }
-
-
-/* .input-search:focus {
-    box-shadow: 0 0 0 4px rgb(139, 191, 252);
-    border-radius: 8px;
-} */
 
 .input-search {
     background-color: transparent;
@@ -153,6 +149,11 @@
     border-radius: 225px;
 }
 
+.content-dotsmodal:hover {
+    background-color: #efefef;
+    border-radius: 225px;
+}
+
 .border-nav {
     margin: 0;
     border-top: 1px solid #efefef;
@@ -191,17 +192,6 @@
     align-self: center;
 }
 
-.glyphicon {
-    font-size: 20px;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-}
-
-.btn {
-    margin: 10px;
-}
-
 .modal {
     position: fixed;
     top: 0;
@@ -214,11 +204,13 @@
 .modal-main {
     position: fixed;
     background: white;
-    width: 80%;
+    width: 100%;
     height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 8px;
+    max-width: 500px;
 }
 
 .display-block {
@@ -232,8 +224,134 @@
 .content-modalheader {
     display: flex;
     justify-content: space-between;
+    padding: 24px 16px;
 }
 
 .content-buttom {
     display: flex;
+    justify-content: center;
+}
+
+svg.svg-inline--fa.fa-ellipsis-h.fa-w-16.font-sizellipsis {
+    font-size: 16px;
+}
+
+.content-dotsmodal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+.content-modalimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-modal {
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modal-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 14px;
+    min-height: 40px;
+    background: transparent;
+    border: none;
+    background-color: #efefef;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.color-save {
+    background-color: #e60023;
+    margin-left: 12px;
+}
+
+.fa-upload,
+.text-btnsend {
+    padding-right: 5px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.fa-thumbtack,
+.text-btnsave {
+    padding-right: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.modal-button:hover {
+    background: rgb(226, 226, 226);
+}
+
+.color-save:hover {
+    background-color: #c72b22;
+}
+
+.button-closemodal {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    margin-right: 16px;
+    margin-top: 16px;
+    width: 40px;
+    height: 40px;
+}
+
+.button-closemodal:hover {
+    background: rgb(226, 226, 226);
+    border-radius: 225px;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.divimg-modal {
+    margin-bottom: 50px;
+}
+
+.img-modal:hover {
+    background: black;
+    opacity: 0.34;
+}
+
+.footer {
+    bottom: 14px;
+    position: fixed;
+    right: 14px;
+    transform: translateZ(0);
+    z-index: 660;
+}
+
+.btn-plus,
+.btn-question {
+    background-color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #333;
+    border: none;
+    width: 35px;
+    height: 35px;
+    margin: 8px;
+    text-align: center;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, .1), 0 0 0 0.5px rgba(0, 0, 0, .04);
+}
+
+.btn-plus:hover,
+.btn-question:hover {
+    background: #efefef;
 }
