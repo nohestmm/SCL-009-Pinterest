@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1a3195fd2c701c9b77e836cc378a5089",
+    "revision": "f0a2fda3f3c22ffd39fb8996b4259ab2",
     "url": "/SCL-009-Pinterest/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SCL-009-Pinterest/static/css/2.8883b4a4.chunk.css"
   },
   {
-    "revision": "7f03e433e6989e149a3d",
-    "url": "/SCL-009-Pinterest/static/css/main.26baae31.chunk.css"
+    "revision": "d1e0082288c04457d2b1",
+    "url": "/SCL-009-Pinterest/static/css/main.b0affad7.chunk.css"
   },
   {
     "revision": "91e23b1e98a7037dd592",
     "url": "/SCL-009-Pinterest/static/js/2.dbd511b3.chunk.js"
   },
   {
-    "revision": "7f03e433e6989e149a3d",
-    "url": "/SCL-009-Pinterest/static/js/main.84b7a16c.chunk.js"
+    "revision": "d1e0082288c04457d2b1",
+    "url": "/SCL-009-Pinterest/static/js/main.e047f239.chunk.js"
   },
   {
     "revision": "3144f90f57c4d259a285",
