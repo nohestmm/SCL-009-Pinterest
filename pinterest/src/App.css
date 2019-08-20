@@ -95,7 +95,7 @@
     font-weight: 700;
 }
 
-.imagesList {
+.images-list {
     width: 100%;
     border-radius: 8px;
     cursor: zoom-in;
@@ -324,8 +324,9 @@ svg.svg-inline--fa.fa-ellipsis-h.fa-w-16.font-sizellipsis {
     margin-bottom: 50px;
 }
 
-.img-modal:hover {
-    background: black;
+.img-modal:hover,
+.images-list:hover {
+    background: grey;
     opacity: 0.34;
 }
 

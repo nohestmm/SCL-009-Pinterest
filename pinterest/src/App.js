@@ -58,7 +58,7 @@ class App extends React.Component {
         return (
           <div key={index}
             className="content-img">
-            <img className="imagesList"
+            <img className="images-list"
               src={el.urls.thumb} alt="" key={index}
               onClick={() => this.showModal(el.urls.thumb)} /></div>)
       })
