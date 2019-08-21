@@ -215,6 +215,7 @@
 
 .display-block {
     display: block;
+    overflow-y: scroll;
 }
 
 .display-none {

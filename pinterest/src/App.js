@@ -83,7 +83,6 @@ class App extends React.Component {
       .then(res => {
         return res.json()
       }).then(resJson => {
-        console.log(resJson);
         this.setState({
           images: this.state.images.concat(resJson)
         })
@@ -122,7 +121,7 @@ class App extends React.Component {
           show={this.state.show}
           pic={this.state.pic}
           handleClose={this.hideModal} />
-          <Footerbutton/>
+        <Footerbutton />
       </>
     )
   }
