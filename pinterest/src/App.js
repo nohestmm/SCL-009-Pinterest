@@ -33,7 +33,7 @@ class App extends React.Component {
     this.setState({ active: !currentState });
   }
   showModal = (pic) => {
-    this.setState({ show: true, });
+    this.setState({ show: true });
     this.setState({ pic: pic })
   }
   hideModal = () => {
@@ -60,7 +60,7 @@ class App extends React.Component {
             className="content-img">
             <img className="images-list"
               src={el.urls.thumb} alt="" key={index}
-              onClick={() => this.showModal(el.urls.thumb)} /></div>)
+              onClick={() => this.showModal(el.urls.small)} /></div>)
       })
     )
   }
@@ -93,7 +93,7 @@ class App extends React.Component {
       <>
         <nav className="navbar">
           <div className="content-icon"><i className="fab fa-pinterest" onClick={this.getQueryValue}></i></div>
-          <div className={this.state.active ? "border-search" : "content-input"} onClick={this.toggleClass}>
+          <div className={this.state.active ? "content-input border-search" : "content-input"} onClick={this.toggleClass}>
             <div><i className="fas fa-search"></i></div>
             <input className="input-search color-text" placeholder="Buscar" type="text" onKeyPress={this.getQueryValue} />
           </div>

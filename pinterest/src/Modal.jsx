@@ -24,7 +24,9 @@ const Modal = ({ handleClose, show, pic }) => {
           </div>
         </div>
         <div className="content-modalimg">
-          <div className="divimg-modal"><img src={pic} alt="" className="img-modal" /></div>
+          <div className="divimg-modal">
+            <img src={pic} alt="" className="img-modal" />
+            </div>
           </div>
            </section>
            <Footerbutton/>
